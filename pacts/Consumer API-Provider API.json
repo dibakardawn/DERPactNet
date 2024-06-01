@@ -1,0 +1,56 @@
+{
+  "consumer": {
+    "name": "Consumer API"
+  },
+  "interactions": [
+    {
+      "description": "A GET request to /api/data",
+      "providerStates": [
+        {
+          "name": "There is available data"
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "path": "/api/data"
+      },
+      "response": {
+        "body": {
+          "data": [
+            "Value1",
+            "Value2"
+          ]
+        },
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          },
+          "header": {}
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pactRust": {
+      "ffi": "0.4.0",
+      "models": "1.0.4"
+    },
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  },
+  "provider": {
+    "name": "Provider API"
+  }
+}

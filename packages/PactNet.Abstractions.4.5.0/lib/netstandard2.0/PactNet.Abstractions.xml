@@ -1,0 +1,1653 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PactNet.Abstractions</name>
+    </assembly>
+    <members>
+        <member name="T:PactNet.Exceptions.PactFailureException">
+            <summary>
+            Error relating to a failing pact test
+            </summary>
+        </member>
+        <member name="M:PactNet.Exceptions.PactFailureException.#ctor(System.String)">
+            <summary>
+            Initialises a new instance of the <see cref="T:PactNet.Exceptions.PactFailureException"/> class.
+            </summary>
+            <param name="message">The message that describes the error</param>
+        </member>
+        <member name="M:PactNet.Exceptions.PactFailureException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initialises a new instance of the <see cref="T:PactNet.Exceptions.PactFailureException" /> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified</param>
+        </member>
+        <member name="T:PactNet.Exceptions.PactMessageConsumerVerificationException">
+            <summary>
+            Error related to verifying a message pact consumer test
+            </summary>
+        </member>
+        <member name="M:PactNet.Exceptions.PactMessageConsumerVerificationException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:PactNet.Exceptions.PactMessageConsumerVerificationException" /> class
+            </summary>
+        </member>
+        <member name="M:PactNet.Exceptions.PactMessageConsumerVerificationException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PactNet.Exceptions.PactMessageConsumerVerificationException" /> class
+            </summary>
+            <param name="message">The message that describes the error</param>
+        </member>
+        <member name="M:PactNet.Exceptions.PactMessageConsumerVerificationException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PactNet.Exceptions.PactMessageConsumerVerificationException" /> class
+            </summary>
+            <param name="message">The error message that explains the reason for the exception</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified</param>
+        </member>
+        <member name="T:PactNet.IConfiguredMessageVerifier">
+            <summary>
+            A configured message type state, which can now be verified
+            </summary>
+        </member>
+        <member name="M:PactNet.IConfiguredMessageVerifier.Verify``1(System.Action{``0})">
+            <summary>
+            Verify a message is read and handled correctly
+            </summary>
+            <param name="handler">The method using the message</param>
+        </member>
+        <member name="M:PactNet.IConfiguredMessageVerifier.VerifyAsync``1(System.Func{``0,System.Threading.Tasks.Task})">
+            <summary>
+            Verify a message is read and handled correctly
+            </summary>
+            <param name="handler">The method using the message</param>
+        </member>
+        <member name="T:PactNet.IConsumerContext">
+            <summary>
+            Pact consumer interaction verification context
+            </summary>
+        </member>
+        <member name="P:PactNet.IConsumerContext.MockServerUri">
+            <summary>
+            URI for the mock server
+            </summary>
+        </member>
+        <member name="T:PactNet.IMessageBuilderV3">
+            <summary>
+            Build up a mock message for a v3 message message pact
+            </summary>
+        </member>
+        <member name="M:PactNet.IMessageBuilderV3.Given(System.String)">
+            <summary>
+            Add a provider state
+            </summary>
+            <param name="providerState">Provider state description</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IMessageBuilderV3.Given(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Add a provider state with one or more parameters
+            </summary>
+            <param name="providerState">Provider state description</param>
+            <param name="parameters">Provider state parameters</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IMessageBuilderV3.WithMetadata(System.String,System.String)">
+            <summary>
+            Set the metadata
+            </summary>
+            <param name="key">the metadata key</param>
+            <param name="value">the metadata value</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IMessageBuilderV3.WithJsonContent(System.Object)">
+            <summary>
+            Set message content which is serialised as JSON
+            </summary>
+            <param name="body">Message body</param>
+            <returns>Configured message</returns>
+        </member>
+        <member name="M:PactNet.IMessageBuilderV3.WithJsonContent(System.Object,Newtonsoft.Json.JsonSerializerSettings)">
+            <summary>
+            Set message content which is serialised as JSON
+            </summary>
+            <param name="body">Message body</param>
+            <param name="settings">Custom JSON serializer settings</param>
+            <returns>Configured message</returns>
+        </member>
+        <member name="T:PactNet.IMessagePact">
+            <summary>
+            A messaging messagePact between a consumer and a provider
+            </summary>
+        </member>
+        <member name="P:PactNet.IMessagePact.Consumer">
+            <summary>
+            Consumer name
+            </summary>
+        </member>
+        <member name="P:PactNet.IMessagePact.Provider">
+            <summary>
+            Provider name
+            </summary>
+        </member>
+        <member name="P:PactNet.IMessagePact.Config">
+            <summary>
+            Pact config
+            </summary>
+        </member>
+        <member name="T:PactNet.IMessagePactV3">
+            <summary>
+            Marker interface for a v3 message Pact
+            </summary>
+        </member>
+        <member name="T:PactNet.IMessagePactBuilderV3">
+            <summary>
+            Message pact v3 Builder
+            </summary>
+        </member>
+        <member name="M:PactNet.IMessagePactBuilderV3.ExpectsToReceive(System.String)">
+            <summary>
+            Add a new message to the pact
+            </summary>
+            <param name="description">Message description</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IMessagePactBuilderV3.WithPactMetadata(System.String,System.String,System.String)">
+            <summary>
+            Add metadata information to message pact
+            </summary>
+            <param name="namespace">the parent configuration section</param>
+            <param name="name">the metadata field value</param>
+            <param name="value">the metadata field value</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="T:PactNet.Infrastructure.Outputters.ConsoleOutput">
+            <summary>
+            Console output
+            </summary>
+        </member>
+        <member name="M:PactNet.Infrastructure.Outputters.ConsoleOutput.WriteLine(System.String)">
+            <summary>
+            Write a line to the console
+            </summary>
+            <param name="line">Line</param>
+        </member>
+        <member name="T:PactNet.IPact">
+            <summary>
+            A pact between a consumer and a provider
+            </summary>
+        </member>
+        <member name="P:PactNet.IPact.Consumer">
+            <summary>
+            Consumer name
+            </summary>
+        </member>
+        <member name="P:PactNet.IPact.Provider">
+            <summary>
+            Provider name
+            </summary>
+        </member>
+        <member name="P:PactNet.IPact.Config">
+            <summary>
+            Pact config
+            </summary>
+        </member>
+        <member name="T:PactNet.IPactV2">
+            <summary>
+            Marker interface for a v2 Pact
+            </summary>
+        </member>
+        <member name="T:PactNet.IPactV3">
+            <summary>
+            Marker interface for a v3 Pact
+            </summary>
+        </member>
+        <member name="T:PactNet.IPactBuilder">
+            <summary>
+            Pact Builder
+            </summary>
+        </member>
+        <member name="M:PactNet.IPactBuilder.Verify(System.Action{PactNet.IConsumerContext})">
+            <summary>
+            Verify the configured interactions
+            </summary>
+            <param name="interact">Action to perform the real interactions against the mock server</param>
+            <exception cref="T:PactNet.Exceptions.PactFailureException">Failed to verify the interactions</exception>
+        </member>
+        <member name="M:PactNet.IPactBuilder.VerifyAsync(System.Func{PactNet.IConsumerContext,System.Threading.Tasks.Task})">
+            <summary>
+            Verify the configured interactions
+            </summary>
+            <param name="interact">Action to perform the real interactions against the mock server</param>
+            <exception cref="T:PactNet.Exceptions.PactFailureException">Failed to verify the interactions</exception>
+        </member>
+        <member name="T:PactNet.IPactBuilderV2">
+            <summary>
+            Pact v2 Builder
+            </summary>
+        </member>
+        <member name="M:PactNet.IPactBuilderV2.UponReceiving(System.String)">
+            <summary>
+            Add a new interaction to the pact
+            </summary>
+            <param name="description">Interaction description</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="T:PactNet.IPactBuilderV3">
+            <summary>
+            Pact v3 Builder
+            </summary>
+        </member>
+        <member name="M:PactNet.IPactBuilderV3.UponReceiving(System.String)">
+            <summary>
+            Add a new interaction to the pact
+            </summary>
+            <param name="description">Interaction description</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="T:PactNet.IRequestBuilderV2">
+            <summary>
+            Build up a mock request for a v2 pact
+            </summary>
+        </member>
+        <member name="M:PactNet.IRequestBuilderV2.Given(System.String)">
+            <summary>
+            Add a provider state
+            </summary>
+            <param name="providerState">Provider state description</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IRequestBuilderV2.WithRequest(System.Net.Http.HttpMethod,System.String)">
+            <summary>
+            Set the request
+            </summary>
+            <param name="method">Request method</param>
+            <param name="path">Request path</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IRequestBuilderV2.WithRequest(System.String,System.String)">
+            <summary>
+            Set the request
+            </summary>
+            <param name="method">Request method</param>
+            <param name="path">Request path</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IRequestBuilderV2.WithQuery(System.String,System.String)">
+            <summary>
+            Add a query string parameter
+            </summary>
+            <param name="key">Query parameter key</param>
+            <param name="value">Query parameter value</param>
+            <returns>Fluent builder</returns>
+            <remarks>You can add a query parameter with the same key multiple times</remarks>
+        </member>
+        <member name="M:PactNet.IRequestBuilderV2.WithHeader(System.String,System.String)">
+            <summary>
+            Add a request header
+            </summary>
+            <param name="key">Header key</param>
+            <param name="value">Header value</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IRequestBuilderV2.WithHeader(System.String,PactNet.Matchers.IMatcher)">
+            <summary>
+            Add a request header
+            </summary>
+            <param name="key">Header key</param>
+            <param name="matcher">Header value matcher</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IRequestBuilderV2.WithJsonBody(System.Object)">
+            <summary>
+            Set a body which is serialised as JSON
+            </summary>
+            <param name="body">Request body</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IRequestBuilderV2.WithJsonBody(System.Object,System.String)">
+            <summary>
+            Set a body which is serialised as JSON
+            </summary>
+            <param name="body">Request body</param>
+            <param name="contentType">Content type override</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IRequestBuilderV2.WithJsonBody(System.Object,Newtonsoft.Json.JsonSerializerSettings)">
+            <summary>
+            Set a body which is serialised as JSON
+            </summary>
+            <param name="body">Request body</param>
+            <param name="settings">Custom JSON serializer settings</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IRequestBuilderV2.WithJsonBody(System.Object,Newtonsoft.Json.JsonSerializerSettings,System.String)">
+            <summary>
+            Set a body which is serialised as JSON
+            </summary>
+            <param name="body">Request body</param>
+            <param name="settings">Custom JSON serializer settings</param>
+            <param name="contentType">Content type override</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IRequestBuilderV2.WithBody(System.String,System.String)">
+            <summary>
+            A pre-formatted body which should be used as-is for the request 
+            </summary>
+            <param name="body">Request body</param>
+            <param name="contentType">Content type</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IRequestBuilderV2.WillRespond">
+            <summary>
+            Define the response to this request
+            </summary>
+            <returns>Response builder</returns>
+        </member>
+        <member name="T:PactNet.IRequestBuilderV3">
+            <summary>
+            Build up a mock request for a v3 pact
+            </summary>
+        </member>
+        <member name="M:PactNet.IRequestBuilderV3.Given(System.String)">
+            <summary>
+            Add a provider state
+            </summary>
+            <param name="providerState">Provider state description</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IRequestBuilderV3.Given(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Add a provider state with one or more parameters
+            </summary>
+            <param name="providerState">Provider state description</param>
+            <param name="parameters">Provider state parameters</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IRequestBuilderV3.WithRequest(System.Net.Http.HttpMethod,System.String)">
+            <summary>
+            Set the request
+            </summary>
+            <param name="method">Request method</param>
+            <param name="path">Request path</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IRequestBuilderV3.WithRequest(System.String,System.String)">
+            <summary>
+            Set the request
+            </summary>
+            <param name="method">Request method</param>
+            <param name="path">Request path</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IRequestBuilderV3.WithQuery(System.String,System.String)">
+            <summary>
+            Add a query string parameter
+            </summary>
+            <param name="key">Query parameter key</param>
+            <param name="value">Query parameter value</param>
+            <returns>Fluent builder</returns>
+            <remarks>You can add a query parameter with the same key multiple times</remarks>
+        </member>
+        <member name="M:PactNet.IRequestBuilderV3.WithQuery(System.String,PactNet.Matchers.IMatcher)">
+            <summary>
+            Add a query parameter matcher
+            </summary>
+            <param name="key">Query parameter key</param>
+            <param name="matcher">Query parameter matcher</param>
+            <returns>Fluent builder</returns>
+            <remarks>You can add a query parameter with the same key multiple times</remarks>
+        </member>
+        <member name="M:PactNet.IRequestBuilderV3.WithHeader(System.String,System.String)">
+            <summary>
+            Add a request header
+            </summary>
+            <param name="key">Header key</param>
+            <param name="value">Header value</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IRequestBuilderV3.WithHeader(System.String,PactNet.Matchers.IMatcher)">
+            <summary>
+            Add a request header matcher
+            </summary>
+            <param name="key">Header key</param>
+            <param name="matcher">Header value matcher</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IRequestBuilderV3.WithJsonBody(System.Object)">
+            <summary>
+            Set a body which is serialised as JSON
+            </summary>
+            <param name="body">Request body</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IRequestBuilderV3.WithJsonBody(System.Object,System.String)">
+            <summary>
+            Set a body which is serialised as JSON
+            </summary>
+            <param name="body">Request body</param>
+            <param name="contentType">Content type override</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IRequestBuilderV3.WithJsonBody(System.Object,Newtonsoft.Json.JsonSerializerSettings)">
+            <summary>
+            Set a body which is serialised as JSON
+            </summary>
+            <param name="body">Request body</param>
+            <param name="settings">Custom JSON serializer settings</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IRequestBuilderV3.WithJsonBody(System.Object,Newtonsoft.Json.JsonSerializerSettings,System.String)">
+            <summary>
+            Set a body which is serialised as JSON
+            </summary>
+            <param name="body">Request body</param>
+            <param name="settings">Custom JSON serializer settings</param>
+            <param name="contentType">Content type override</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IRequestBuilderV3.WithBody(System.String,System.String)">
+            <summary>
+            A pre-formatted body which should be used as-is for the request 
+            </summary>
+            <param name="body">Request body</param>
+            <param name="contentType">Content type</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IRequestBuilderV3.WillRespond">
+            <summary>
+            Define the response to this request
+            </summary>
+            <returns>Response builder</returns>
+        </member>
+        <member name="T:PactNet.IResponseBuilderV2">
+            <summary>
+            Mock response builder for a v2 pact
+            </summary>
+        </member>
+        <member name="M:PactNet.IResponseBuilderV2.WithStatus(System.Net.HttpStatusCode)">
+            <summary>
+            Set response status code
+            </summary>
+            <param name="status">Response status code</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IResponseBuilderV2.WithStatus(System.UInt16)">
+            <summary>
+            Set response status code
+            </summary>
+            <param name="status">Response status code</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IResponseBuilderV2.WithHeader(System.String,System.String)">
+            <summary>
+            Add a response header
+            </summary>
+            <param name="key">Header key</param>
+            <param name="value">Header value</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IResponseBuilderV2.WithHeader(System.String,PactNet.Matchers.IMatcher)">
+            <summary>
+            Add a response header
+            </summary>
+            <param name="key">Header key</param>
+            <param name="matcher">Header value matcher</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IResponseBuilderV2.WithJsonBody(System.Object)">
+            <summary>
+            Set a response body which is serialised as JSON
+            </summary>
+            <param name="body">Response body</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IResponseBuilderV2.WithJsonBody(System.Object,Newtonsoft.Json.JsonSerializerSettings)">
+            <summary>
+            Set a response body which is serialised as JSON
+            </summary>
+            <param name="body">Response body</param>
+            <param name="settings">Custom JSON serializer settings</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IResponseBuilderV2.WithBody(System.String,System.String)">
+            <summary>
+            A pre-formatted body which should be used as-is for the response 
+            </summary>
+            <param name="body">Response body</param>
+            <param name="contentType">Content type</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="T:PactNet.IResponseBuilderV3">
+            <summary>
+            Mock response builder for a v3 pact
+            </summary>
+        </member>
+        <member name="M:PactNet.IResponseBuilderV3.WithStatus(System.Net.HttpStatusCode)">
+            <summary>
+            Set response status code
+            </summary>
+            <param name="status">Response status code</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IResponseBuilderV3.WithStatus(System.UInt16)">
+            <summary>
+            Set response status code
+            </summary>
+            <param name="status">Response status code</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IResponseBuilderV3.WithHeader(System.String,System.String)">
+            <summary>
+            Add a response header
+            </summary>
+            <param name="key">Header key</param>
+            <param name="value">Header value</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IResponseBuilderV3.WithHeader(System.String,PactNet.Matchers.IMatcher)">
+            <summary>
+            Add a response header
+            </summary>
+            <param name="key">Header key</param>
+            <param name="matcher">Header value matcher</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IResponseBuilderV3.WithJsonBody(System.Object)">
+            <summary>
+            Set a response body which is serialised as JSON
+            </summary>
+            <param name="body">Response body</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IResponseBuilderV3.WithJsonBody(System.Object,Newtonsoft.Json.JsonSerializerSettings)">
+            <summary>
+            Set a response body which is serialised as JSON
+            </summary>
+            <param name="body">Response body</param>
+            <param name="settings">Custom JSON serializer settings</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.IResponseBuilderV3.WithBody(System.String,System.String)">
+            <summary>
+            A pre-formatted body which should be used as-is for the response 
+            </summary>
+            <param name="body">Response body</param>
+            <param name="contentType">Content type</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="T:PactNet.PactLogLevel">
+            <summary>
+            Pact log level
+            </summary>
+        </member>
+        <member name="T:PactNet.Matchers.DecimalMatcher">
+            <summary>
+            Matcher for decimal values (i.e. numbers with a fractional component)
+            </summary>
+        </member>
+        <member name="P:PactNet.Matchers.DecimalMatcher.Type">
+            <summary>
+            Type of the matcher
+            </summary>
+        </member>
+        <member name="P:PactNet.Matchers.DecimalMatcher.Value">
+            <summary>
+            Matcher value
+            </summary>
+        </member>
+        <member name="M:PactNet.Matchers.DecimalMatcher.#ctor(System.Double)">
+            <summary>
+            Initialises a new instance of the <see cref="T:PactNet.Matchers.DecimalMatcher"/> class.
+            </summary>
+            <param name="example">Example value</param>
+        </member>
+        <member name="M:PactNet.Matchers.DecimalMatcher.#ctor(System.Single)">
+            <summary>
+            Initialises a new instance of the <see cref="T:PactNet.Matchers.DecimalMatcher"/> class.
+            </summary>
+            <param name="example">Example value</param>
+        </member>
+        <member name="M:PactNet.Matchers.DecimalMatcher.#ctor(System.Decimal)">
+            <summary>
+            Initialises a new instance of the <see cref="T:PactNet.Matchers.DecimalMatcher"/> class.
+            </summary>
+            <param name="example">Example value</param>
+        </member>
+        <member name="T:PactNet.Matchers.EqualityMatcher">
+            <summary>
+            Matcher that checks for explicit equality
+            </summary>
+        </member>
+        <member name="P:PactNet.Matchers.EqualityMatcher.Type">
+            <summary>
+            Type of the matcher
+            </summary>
+        </member>
+        <member name="P:PactNet.Matchers.EqualityMatcher.Value">
+            <summary>
+            Matcher value
+            </summary>
+        </member>
+        <member name="M:PactNet.Matchers.EqualityMatcher.#ctor(System.Object)">
+            <summary>
+            Initialises a new instance of the <see cref="T:PactNet.Matchers.EqualityMatcher"/> class.
+            </summary>
+            <param name="value">Match value</param>
+        </member>
+        <member name="T:PactNet.Matchers.IMatcher">
+            <summary>
+            Matcher
+            </summary>
+        </member>
+        <member name="P:PactNet.Matchers.IMatcher.Type">
+            <summary>
+            Type of the matcher
+            </summary>
+        </member>
+        <member name="P:PactNet.Matchers.IMatcher.Value">
+            <summary>
+            Matcher value
+            </summary>
+        </member>
+        <member name="T:PactNet.Matchers.IncludeMatcher">
+            <summary>
+            Matcher for a string include
+            </summary>
+        </member>
+        <member name="P:PactNet.Matchers.IncludeMatcher.Type">
+            <summary>
+            Type of the matcher
+            </summary>
+        </member>
+        <member name="P:PactNet.Matchers.IncludeMatcher.Value">
+            <summary>
+            Matcher value
+            </summary>
+        </member>
+        <member name="M:PactNet.Matchers.IncludeMatcher.#ctor(System.String)">
+            <summary>
+            Initialises a new instance of the <see cref="T:PactNet.Matchers.IncludeMatcher"/> class.
+            </summary>
+            <param name="include">Include string</param>
+        </member>
+        <member name="T:PactNet.Matchers.IntegerMatcher">
+            <summary>
+            Match an integer specifically
+            </summary>
+        </member>
+        <member name="P:PactNet.Matchers.IntegerMatcher.Type">
+            <summary>
+            Type of the matcher
+            </summary>
+        </member>
+        <member name="P:PactNet.Matchers.IntegerMatcher.Value">
+            <summary>
+            Matcher value
+            </summary>
+        </member>
+        <member name="M:PactNet.Matchers.IntegerMatcher.#ctor(System.Int32)">
+            <summary>
+            Initialises a new instance of the <see cref="T:PactNet.Matchers.IntegerMatcher"/> class.
+            </summary>
+            <param name="value">Example value</param>
+        </member>
+        <member name="M:PactNet.Matchers.Match.Regex(System.String,System.String)">
+            <summary>
+            Match a string property against a regex
+            </summary>
+            <param name="example">String example</param>
+            <param name="regex">Match regex</param>
+            <returns>Matcher</returns>
+        </member>
+        <member name="M:PactNet.Matchers.Match.Type(System.Object)">
+            <summary>
+            Match a property by type
+            </summary>
+            <param name="example">Example value</param>
+            <returns>Matcher</returns>
+        </member>
+        <member name="M:PactNet.Matchers.Match.MinType(System.Object,System.Int32)">
+            <summary>
+            Match every element of a collection with a min size against an example matcher
+            </summary>
+            <param name="example">Example to match each element against</param>
+            <param name="min">Minimum collection size</param>
+            <returns>Matcher</returns>
+        </member>
+        <member name="M:PactNet.Matchers.Match.MaxType(System.Object,System.Int32)">
+            <summary>
+            Match every element of a collection with a max size against an example matcher
+            </summary>
+            <param name="example">Example to match each element against</param>
+            <param name="max">Maximum collection size</param>
+            <returns>Matcher</returns>
+        </member>
+        <member name="M:PactNet.Matchers.Match.MinMaxType(System.Object,System.Int32,System.Int32)">
+            <summary>
+            Match every element of a collection with a min and max size against an example matcher
+            </summary>
+            <param name="example">Example to match each element against</param>
+            <param name="min">Minimum collection size</param>
+            <param name="max">Maximum collection size</param>
+            <returns>Matcher</returns>
+        </member>
+        <member name="M:PactNet.Matchers.Match.Integer(System.Int32)">
+            <summary>
+            Matcher which matches specifically on integers (i.e. not decimals)
+            </summary>
+            <param name="example">Example value</param>
+            <returns>Matcher</returns>
+        </member>
+        <member name="M:PactNet.Matchers.Match.Decimal(System.Double)">
+            <summary>
+            Matcher which matches specifically on decimals (i.e. numbers with a fractional component)
+            </summary>
+            <param name="example">Example value</param>
+            <returns>Matcher</returns>
+        </member>
+        <member name="M:PactNet.Matchers.Match.Decimal(System.Single)">
+            <summary>
+            Matcher which matches specifically on decimals (i.e. numbers with a fractional component)
+            </summary>
+            <param name="example">Example value</param>
+            <returns>Matcher</returns>
+        </member>
+        <member name="M:PactNet.Matchers.Match.Decimal(System.Decimal)">
+            <summary>
+            Matcher which matches specifically on decimals (i.e. numbers with a fractional component)
+            </summary>
+            <param name="example">Example value</param>
+            <returns>Matcher</returns>
+        </member>
+        <member name="M:PactNet.Matchers.Match.Number(System.Int32)">
+            <summary>
+            Matcher which matches specifically any numeric type (fractional or not)
+            </summary>
+            <param name="example">Example value</param>
+            <returns>Matcher</returns>
+        </member>
+        <member name="M:PactNet.Matchers.Match.Number(System.Double)">
+            <summary>
+            Matcher which matches specifically any numeric type (fractional or not)
+            </summary>
+            <param name="example">Example value</param>
+            <returns>Matcher</returns>
+        </member>
+        <member name="M:PactNet.Matchers.Match.Number(System.Single)">
+            <summary>
+            Matcher which matches specifically any numeric type (fractional or not)
+            </summary>
+            <param name="example">Example value</param>
+            <returns>Matcher</returns>
+        </member>
+        <member name="M:PactNet.Matchers.Match.Number(System.Decimal)">
+            <summary>
+            Matcher which matches specifically any numeric type (fractional or not)
+            </summary>
+            <param name="example">Example value</param>
+            <returns>Matcher</returns>
+        </member>
+        <member name="M:PactNet.Matchers.Match.Equality(System.Object)">
+            <summary>
+            Matcher which matches an exact value
+            </summary>
+            <param name="example">Example value</param>
+            <returns>Matcher</returns>
+        </member>
+        <member name="M:PactNet.Matchers.Match.Null">
+            <summary>
+            Matcher which matches an explicit null value
+            </summary>
+            <returns>Matcher</returns>
+        </member>
+        <member name="M:PactNet.Matchers.Match.Include(System.String)">
+            <summary>
+            Matcher which checks that a string property includes an example string
+            </summary>
+            <param name="example">Example value</param>
+            <returns>Matcher</returns>
+        </member>
+        <member name="T:PactNet.Matchers.MinMaxTypeMatcher">
+            <summary>
+            Match every element of a collection with a min and/or max size against an example matcher
+            </summary>
+        </member>
+        <member name="M:PactNet.Matchers.MinMaxTypeMatcher.#ctor(System.Object,System.Int32,System.Int32)">
+            <summary>
+            Initialises a new instance of the <see cref="T:PactNet.Matchers.MinMaxTypeMatcher"/> class.
+            </summary>
+            <param name="example">Example matcher</param>
+            <param name="min">Minimum collection size</param>
+            <param name="max">Maximum collection size</param>
+        </member>
+        <member name="T:PactNet.Matchers.NullMatcher">
+            <summary>
+            Matcher against an explicit null value
+            </summary>
+        </member>
+        <member name="P:PactNet.Matchers.NullMatcher.Type">
+            <summary>
+            Type of the matcher
+            </summary>
+        </member>
+        <member name="P:PactNet.Matchers.NullMatcher.Value">
+            <summary>
+            Matcher value
+            </summary>
+        </member>
+        <member name="M:PactNet.Matchers.NullMatcher.#ctor">
+            <summary>
+            Initialises a new instance of the <see cref="T:PactNet.Matchers.NullMatcher"/> class.
+            </summary>
+        </member>
+        <member name="T:PactNet.Matchers.NumericMatcher">
+            <summary>
+            Matcher for any number
+            </summary>
+        </member>
+        <member name="P:PactNet.Matchers.NumericMatcher.Type">
+            <summary>
+            Type of the matcher
+            </summary>
+        </member>
+        <member name="P:PactNet.Matchers.NumericMatcher.Value">
+            <summary>
+            Matcher value
+            </summary>
+        </member>
+        <member name="M:PactNet.Matchers.NumericMatcher.#ctor(System.Double)">
+            <summary>
+            Initialises a new instance of the <see cref="T:PactNet.Matchers.NumericMatcher"/> class.
+            </summary>
+            <param name="example">Example value</param>
+        </member>
+        <member name="M:PactNet.Matchers.NumericMatcher.#ctor(System.Single)">
+            <summary>
+            Initialises a new instance of the <see cref="T:PactNet.Matchers.NumericMatcher"/> class.
+            </summary>
+            <param name="example">Example value</param>
+        </member>
+        <member name="M:PactNet.Matchers.NumericMatcher.#ctor(System.Decimal)">
+            <summary>
+            Initialises a new instance of the <see cref="T:PactNet.Matchers.NumericMatcher"/> class.
+            </summary>
+            <param name="example">Example value</param>
+        </member>
+        <member name="M:PactNet.Matchers.NumericMatcher.#ctor(System.Int32)">
+            <summary>
+            Initialises a new instance of the <see cref="T:PactNet.Matchers.NumericMatcher"/> class.
+            </summary>
+            <param name="example">Example value</param>
+        </member>
+        <member name="T:PactNet.MessagePact">
+            <summary>
+            Pact
+            </summary>
+        </member>
+        <member name="P:PactNet.MessagePact.Consumer">
+            <summary>
+            Consumer name
+            </summary>
+        </member>
+        <member name="P:PactNet.MessagePact.Provider">
+            <summary>
+            Provider name
+            </summary>
+        </member>
+        <member name="P:PactNet.MessagePact.Config">
+            <summary>
+            Pact config
+            </summary>
+        </member>
+        <member name="M:PactNet.MessagePact.#ctor(System.String,System.String)">
+            <summary>
+            Initialises a new instance of the <see cref="T:PactNet.Pact"/> class.
+            </summary>
+            <param name="consumer">Name of the consumer</param>
+            <param name="provider">Name of the provider</param>
+        </member>
+        <member name="M:PactNet.MessagePact.#ctor(System.String,System.String,PactNet.PactConfig)">
+            <summary>
+            Initialises a new instance of the <see cref="T:PactNet.Pact"/> class.
+            </summary>
+            <param name="consumer">Name of the consumer</param>
+            <param name="provider">Name of the provider</param>
+            <param name="config">Pact config</param>
+        </member>
+        <member name="M:PactNet.MessagePact.V3(System.String,System.String)">
+            <summary>
+            Create a new v3 messagePact
+            </summary>
+            <param name="consumer">Name of the consumer</param>
+            <param name="provider">Name of the provider</param>
+            <returns>v2 Pact</returns>
+        </member>
+        <member name="M:PactNet.MessagePact.V3(System.String,System.String,PactNet.PactConfig)">
+            <summary>
+            Create a new v3 messagePact
+            </summary>
+            <param name="consumer">Name of the consumer</param>
+            <param name="provider">Name of the provider</param>
+            <param name="config">Pact config</param>
+            <returns>v3 Pact</returns>
+        </member>
+        <member name="T:PactNet.Pact">
+            <summary>
+            Pact
+            </summary>
+        </member>
+        <member name="P:PactNet.Pact.Consumer">
+            <summary>
+            Consumer name
+            </summary>
+        </member>
+        <member name="P:PactNet.Pact.Provider">
+            <summary>
+            Provider name
+            </summary>
+        </member>
+        <member name="P:PactNet.Pact.Config">
+            <summary>
+            Pact config
+            </summary>
+        </member>
+        <member name="M:PactNet.Pact.#ctor(System.String,System.String)">
+            <summary>
+            Initialises a new instance of the <see cref="T:PactNet.Pact"/> class.
+            </summary>
+            <param name="consumer">Name of the consumer</param>
+            <param name="provider">Name of the provider</param>
+        </member>
+        <member name="M:PactNet.Pact.#ctor(System.String,System.String,PactNet.PactConfig)">
+            <summary>
+            Initialises a new instance of the <see cref="T:PactNet.Pact"/> class.
+            </summary>
+            <param name="consumer">Name of the consumer</param>
+            <param name="provider">Name of the provider</param>
+            <param name="config">Pact config</param>
+        </member>
+        <member name="M:PactNet.Pact.V2(System.String,System.String)">
+            <summary>
+            Create a new v2 pact
+            </summary>
+            <param name="consumer">Name of the consumer</param>
+            <param name="provider">Name of the provider</param>
+            <returns>v2 Pact</returns>
+        </member>
+        <member name="M:PactNet.Pact.V2(System.String,System.String,PactNet.PactConfig)">
+            <summary>
+            Create a new v2 pact
+            </summary>
+            <param name="consumer">Name of the consumer</param>
+            <param name="provider">Name of the provider</param>
+            <param name="config">Pact config</param>
+            <returns>v2 Pact</returns>
+        </member>
+        <member name="M:PactNet.Pact.V3(System.String,System.String)">
+            <summary>
+            Create a new v3 pact
+            </summary>
+            <param name="consumer">Name of the consumer</param>
+            <param name="provider">Name of the provider</param>
+            <returns>v2 Pact</returns>
+        </member>
+        <member name="M:PactNet.Pact.V3(System.String,System.String,PactNet.PactConfig)">
+            <summary>
+            Create a new v3 pact
+            </summary>
+            <param name="consumer">Name of the consumer</param>
+            <param name="provider">Name of the provider</param>
+            <param name="config">Pact config</param>
+            <returns>v3 Pact</returns>
+        </member>
+        <member name="T:PactNet.PactConfig">
+            <summary>
+            Pact configuration
+            </summary>
+        </member>
+        <member name="P:PactNet.PactConfig.PactDir">
+            <summary>
+            Pact file destination directory
+            </summary>
+        </member>
+        <member name="P:PactNet.PactConfig.LogLevel">
+            <summary>
+            Log level for the verifier
+            </summary>
+        </member>
+        <member name="P:PactNet.PactConfig.Outputters">
+            <summary>
+            Log outputs
+            </summary>
+        </member>
+        <member name="P:PactNet.PactConfig.DefaultJsonSettings">
+            <summary>
+            Default JSON serializer settings
+            </summary>
+        </member>
+        <member name="M:PactNet.PactConfig.#ctor">
+            <summary>
+            Initialises a new instance of the <see cref="T:PactNet.PactConfig"/> class.
+            </summary>
+        </member>
+        <member name="M:PactNet.PactConfig.ConvertToDirectory(System.String)">
+            <summary>
+            Ensure a string path ends with a trailing slash
+            </summary>
+            <param name="path">Directory path</param>
+            <returns>Path with trailing slash</returns>
+        </member>
+        <member name="M:PactNet.PactConfig.WriteLine(System.String)">
+            <summary>
+            Write a line to all configured outputters
+            </summary>
+            <param name="line">Line to write</param>
+        </member>
+        <member name="T:PactNet.ProviderState">
+            <summary>
+            Provider state setup request body
+            </summary>
+        </member>
+        <member name="P:PactNet.ProviderState.State">
+            <summary>
+            State description
+            </summary>
+        </member>
+        <member name="P:PactNet.ProviderState.Params">
+            <summary>
+            State parameters
+            </summary>
+        </member>
+        <member name="T:PactNet.Verifier.ConsumerVersionSelector">
+            <summary>
+            Consumer version selector
+            </summary>
+            <remarks>See <see href="https://docs.pact.io/pact_broker/advanced_topics/consumer_version_selectors"/></remarks>
+        </member>
+        <member name="P:PactNet.Verifier.ConsumerVersionSelector.MainBranch">
+            <summary>
+            Select pacts from the main branch of the consumer
+            </summary>
+        </member>
+        <member name="P:PactNet.Verifier.ConsumerVersionSelector.MatchingBranch">
+            <summary>
+            Select pacts which have the same branch as the current provider branch
+            </summary>
+        </member>
+        <member name="P:PactNet.Verifier.ConsumerVersionSelector.Branch">
+            <summary>
+            Select pacts from the given branch
+            </summary>
+        </member>
+        <member name="P:PactNet.Verifier.ConsumerVersionSelector.FallbackBranch">
+            <summary>
+            If the consumer doesn't have a branch which matches the <see cref="P:PactNet.Verifier.ConsumerVersionSelector.Branch"/> property, use this branch instead
+            </summary>
+        </member>
+        <member name="P:PactNet.Verifier.ConsumerVersionSelector.Tag">
+            <summary>
+            Select pacts with the given tag
+            </summary>
+            <remarks>It is recommended that the <see cref="P:PactNet.Verifier.ConsumerVersionSelector.Branch"/> property is used instead</remarks>
+        </member>
+        <member name="P:PactNet.Verifier.ConsumerVersionSelector.FallbackTag">
+            <summary>
+            If the consumer doesn't have a tag which matches the <see cref="P:PactNet.Verifier.ConsumerVersionSelector.Tag"/> property, use this tag instead
+            </summary>
+            <remarks>It is recommended that the <see cref="P:PactNet.Verifier.ConsumerVersionSelector.FallbackBranch"/> property is used instead</remarks>
+        </member>
+        <member name="P:PactNet.Verifier.ConsumerVersionSelector.Deployed">
+            <summary>
+            Only return consumer pacts which are deployed to an environment
+            </summary>
+        </member>
+        <member name="P:PactNet.Verifier.ConsumerVersionSelector.Released">
+            <summary>
+            Only return consumer pacts which are released and currently supported in any environment
+            </summary>
+        </member>
+        <member name="P:PactNet.Verifier.ConsumerVersionSelector.DeployedOrReleased">
+            <summary>
+            Either <see cref="P:PactNet.Verifier.ConsumerVersionSelector.Deployed"/> or <see cref="P:PactNet.Verifier.ConsumerVersionSelector.Released"/> (whereas setting both of the other properties
+            would mean deployed AND released)
+            </summary>
+        </member>
+        <member name="P:PactNet.Verifier.ConsumerVersionSelector.Environment">
+            <summary>
+            Only return consumer pacts which match this environment, in conjunction with <see cref="P:PactNet.Verifier.ConsumerVersionSelector.Deployed"/> or <see cref="P:PactNet.Verifier.ConsumerVersionSelector.Released"/>
+            </summary>
+        </member>
+        <member name="P:PactNet.Verifier.ConsumerVersionSelector.Latest">
+            <summary>
+            Only return the latest pact for a given branch or tag
+            </summary>
+            <remarks>This should not be set when used with a branch</remarks>
+        </member>
+        <member name="P:PactNet.Verifier.ConsumerVersionSelector.Consumer">
+            <summary>
+            Only return pacts for the given consumer instead of all consumers
+            </summary>
+        </member>
+        <member name="T:PactNet.Verifier.IPactBrokerOptions">
+            <summary>
+            Pact broker options
+            </summary>
+        </member>
+        <member name="M:PactNet.Verifier.IPactBrokerOptions.BasicAuthentication(System.String,System.String)">
+            <summary>
+            Use Basic authentication with the Pact Broker
+            </summary>
+            <param name="username">Pact broker username</param>
+            <param name="password">Pact broker password</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.Verifier.IPactBrokerOptions.TokenAuthentication(System.String)">
+            <summary>
+            Use Token authentication with the Pact Broker
+            </summary>
+            <param name="token">Auth token</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.Verifier.IPactBrokerOptions.EnablePending">
+            <summary>
+            Enable pending pacts
+            </summary>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.Verifier.IPactBrokerOptions.ProviderBranch(System.String)">
+            <summary>
+            Set the provider branch for retrieving pacts
+            </summary>
+            <param name="branch">Branch name</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.Verifier.IPactBrokerOptions.ProviderTags(System.String[])">
+            <summary>
+            Set the provider tags for retrieving pacts
+            </summary>
+            <param name="tags">Tags</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.Verifier.IPactBrokerOptions.ConsumerTags(System.String[])">
+            <summary>
+            Consumer tag versions to retrieve
+            </summary>
+            <param name="tags">Consumer tags</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.Verifier.IPactBrokerOptions.ConsumerVersionSelectors(System.Collections.Generic.ICollection{PactNet.Verifier.ConsumerVersionSelector})">
+            <summary>
+            Consumer version selectors to control which pacts are returned from the broker
+            </summary>
+            <param name="selectors">Consumer version selectors</param>
+            <returns>Fluent builder</returns>
+            <remarks>See <see href="https://docs.pact.io/pact_broker/advanced_topics/consumer_version_selectors"/></remarks>
+        </member>
+        <member name="M:PactNet.Verifier.IPactBrokerOptions.ConsumerVersionSelectors(PactNet.Verifier.ConsumerVersionSelector[])">
+            <summary>
+            Consumer version selectors to control which pacts are returned from the broker
+            </summary>
+            <param name="selectors">Consumer version selectors</param>
+            <returns>Fluent builder</returns>
+            <remarks>See <see href="https://docs.pact.io/pact_broker/advanced_topics/consumer_version_selectors"/></remarks>
+        </member>
+        <member name="M:PactNet.Verifier.IPactBrokerOptions.IncludeWipPactsSince(System.DateTime)">
+            <summary>
+            Include WIP pacts since the given date
+            </summary>
+            <param name="date">WIP cut-off date</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.Verifier.IPactBrokerOptions.PublishResults(System.String)">
+            <summary>
+            Publish results to the pact broker without any additional settings
+            </summary>
+            <param name="providerVersion">Provider version</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.Verifier.IPactBrokerOptions.PublishResults(System.String,System.Action{PactNet.Verifier.IPactBrokerPublishOptions})">
+            <summary>
+            Publish results to the pact broker with additional settings such as provider branch
+            </summary>
+            <param name="providerVersion">Provider version</param>
+            <param name="configure">Configure the publish options</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.Verifier.IPactBrokerOptions.PublishResults(System.Boolean,System.String)">
+            <summary>
+            Publish results to the pact broker without any additional settings, if the condition is met
+            </summary>
+            <param name="condition">Only publish if this condition is true</param>
+            <param name="providerVersion">Provider version</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.Verifier.IPactBrokerOptions.PublishResults(System.Boolean,System.String,System.Action{PactNet.Verifier.IPactBrokerPublishOptions})">
+            <summary>
+            Publish results to the pact broker with additional settings such as provider branch, if the condition is met
+            </summary>
+            <param name="condition">Only publish if this condition is true</param>
+            <param name="providerVersion">Provider version</param>
+            <param name="configure">Configure the publish options</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="T:PactNet.Verifier.IPactBrokerPublishOptions">
+            <summary>
+            Options for publishing verification results to the Pact Broker
+            </summary>
+        </member>
+        <member name="M:PactNet.Verifier.IPactBrokerPublishOptions.ProviderTags(System.String[])">
+            <summary>
+            Tag the provider with the given tags
+            </summary>
+            <param name="tags">Tags to apply</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.Verifier.IPactBrokerPublishOptions.ProviderBranch(System.String)">
+            <summary>
+            Set the branch of the provider
+            </summary>
+            <param name="branch">Provider branch</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.Verifier.IPactBrokerPublishOptions.BuildUri(System.Uri)">
+            <summary>
+            URI of the build that performed the verification
+            </summary>
+            <param name="uri">Build URI</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="T:PactNet.Verifier.IPactUriOptions">
+            <summary>
+            Options for URI pact sources
+            </summary>
+        </member>
+        <member name="M:PactNet.Verifier.IPactUriOptions.BasicAuthentication(System.String,System.String)">
+            <summary>
+            Use Basic authentication to access the URI
+            </summary>
+            <param name="username">Pact broker username</param>
+            <param name="password">Pact broker password</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.Verifier.IPactUriOptions.TokenAuthentication(System.String)">
+            <summary>
+            Use Token authentication to access the URI
+            </summary>
+            <param name="token">Auth token</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.Verifier.IPactUriOptions.PublishResults(System.String)">
+            <summary>
+            Publish results to the pact broker without any additional settings
+            </summary>
+            <param name="providerVersion">Provider version</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.Verifier.IPactUriOptions.PublishResults(System.String,System.Action{PactNet.Verifier.IPactBrokerPublishOptions})">
+            <summary>
+            Publish results to the pact broker with additional settings such as provider branch
+            </summary>
+            <param name="providerVersion">Provider version</param>
+            <param name="configure">Configure the publish options</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.Verifier.IPactUriOptions.PublishResults(System.Boolean,System.String)">
+            <summary>
+            Publish results to the pact broker without any additional settings, if the condition is met
+            </summary>
+            <param name="condition">Only publish if this condition is true</param>
+            <param name="providerVersion">Provider version</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.Verifier.IPactUriOptions.PublishResults(System.Boolean,System.String,System.Action{PactNet.Verifier.IPactBrokerPublishOptions})">
+            <summary>
+            Publish results to the pact broker with additional settings such as provider branch, if the condition is met
+            </summary>
+            <param name="condition">Only publish if this condition is true</param>
+            <param name="providerVersion">Provider version</param>
+            <param name="configure">Configure the publish options</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="T:PactNet.Verifier.IPactVerifier">
+            <summary>
+            Pact verifier
+            </summary>
+        </member>
+        <member name="M:PactNet.Verifier.IPactVerifier.ServiceProvider(System.String,System.Uri)">
+            <summary>
+            Set the provider details
+            </summary>
+            <param name="providerName">Name of the provider</param>
+            <param name="pactUri">URI of the running service</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.Verifier.IPactVerifier.MessagingProvider(System.String)">
+            <summary>
+            Set the provider details of a messaging provider
+            </summary>
+            <param name="providerName">Name of the provider</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.Verifier.IPactVerifier.MessagingProvider(System.String,Newtonsoft.Json.JsonSerializerSettings)">
+            <summary>
+            Set the provider details of a messaging provider
+            </summary>
+            <param name="providerName">Name of the provider</param>
+            <param name="settings">Default JSON serialisation settings</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="T:PactNet.Verifier.IPactVerifierProvider">
+            <summary>
+            Pact verifier provider
+            </summary>
+        </member>
+        <member name="M:PactNet.Verifier.IPactVerifierProvider.WithFileSource(System.IO.FileInfo)">
+            <summary>
+            Verify a pact file directly
+            </summary>
+            <param name="pactFile">Pact file path</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.Verifier.IPactVerifierProvider.WithDirectorySource(System.IO.DirectoryInfo,System.String[])">
+            <summary>
+            Verify all pacts in the given directory which match the given consumers (or all pact files if no consumers are specified)
+            </summary>
+            <param name="directory">Directory containing the pact files</param>
+            <param name="consumers">(Optional) Consumer names to filter on</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.Verifier.IPactVerifierProvider.WithUriSource(System.Uri)">
+            <summary>
+            Verify a pact from a URI
+            </summary>
+            <param name="pactUri">Pact file URI</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.Verifier.IPactVerifierProvider.WithUriSource(System.Uri,System.Action{PactNet.Verifier.IPactUriOptions})">
+            <summary>
+            Verify a pact from a URI
+            </summary>
+            <param name="pactUri">Pact file URI</param>
+            <param name="configure">Configure URI options</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.Verifier.IPactVerifierProvider.WithPactBrokerSource(System.Uri)">
+            <summary>
+            Use the pact broker to retrieve pact files with default options
+            </summary>
+            <param name="brokerBaseUri">Base URI for the broker</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.Verifier.IPactVerifierProvider.WithPactBrokerSource(System.Uri,System.Action{PactNet.Verifier.IPactBrokerOptions})">
+            <summary>
+            Use the pact broker to retrieve pact files
+            </summary>
+            <param name="brokerBaseUri">Base URI for the broker</param>
+            <param name="configure">Configure pact broker options</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="T:PactNet.Verifier.IPactVerifierSource">
+            <summary>
+            Configured pact verifier source
+            </summary>
+        </member>
+        <member name="M:PactNet.Verifier.IPactVerifierSource.WithProviderStateUrl(System.Uri)">
+            <summary>
+            Set up the provider state setup URL so the service can configure states
+            </summary>
+            <param name="providerStateUri">Provider state setup URI</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.Verifier.IPactVerifierSource.WithProviderStateUrl(System.Uri,System.Action{PactNet.Verifier.IProviderStateOptions})">
+            <summary>
+            Set up the provider state setup URL so the service can configure states
+            </summary>
+            <param name="providerStateUri">Provider state setup URI</param>
+            <param name="configure">Configure provider state options</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.Verifier.IPactVerifierSource.WithFilter(System.String,System.String)">
+            <summary>
+            Filter the interactions to only those matching the given description and/or provider state
+            </summary>
+            <param name="description">Interaction description. All interactions are verified if this is null</param>
+            <param name="providerState">Provider state description. All provider states are verified if this is null</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.Verifier.IPactVerifierSource.WithRequestTimeout(System.TimeSpan)">
+            <summary>
+            Set the timeout for all requests to the provider
+            </summary>
+            <param name="timeout">Timeout</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.Verifier.IPactVerifierSource.WithSslVerificationDisabled">
+            <summary>
+            Disable certificate verification for HTTPS requests
+            </summary>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.Verifier.IPactVerifierSource.WithCustomHeader(System.String,System.String)">
+            <summary>
+            Add a header which will be used in all calls from the verifier to the provider, for example
+            an Authorization header with a valid auth token
+            </summary>
+            <param name="name">Header name</param>
+            <param name="value">Header value</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.Verifier.IPactVerifierSource.Verify">
+            <summary>
+            Verify provider interactions
+            </summary>
+            <exception cref="T:PactNet.Exceptions.PactFailureException">Verification failed</exception>
+        </member>
+        <member name="T:PactNet.Verifier.IProviderStateOptions">
+            <summary>
+            Options for controlling provider state calls
+            </summary>
+        </member>
+        <member name="M:PactNet.Verifier.IProviderStateOptions.WithTeardown">
+            <summary>
+            Provide request callbacks after each interaction is verified
+            </summary>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.Verifier.IProviderStateOptions.WithStyle(PactNet.Verifier.ProviderStateStyle)">
+            <summary>
+            Configure the style in which the provider state endpoint is invoked
+            </summary>
+            <param name="style">Provider state style</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="T:PactNet.Verifier.Messaging.IMessageScenarioBuilder">
+            <summary>
+            Defines the message scenario builder interface
+            </summary>
+        </member>
+        <member name="M:PactNet.Verifier.Messaging.IMessageScenarioBuilder.WithMetadata(System.Object)">
+            <summary>
+            Set the metadata of the message content
+            </summary>
+            <param name="metadata">the metadata</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="M:PactNet.Verifier.Messaging.IMessageScenarioBuilder.WithContent(System.Func{System.Object})">
+            <summary>
+            Set the action of the scenario
+            </summary>
+            <param name="factory">Content factory</param>
+        </member>
+        <member name="M:PactNet.Verifier.Messaging.IMessageScenarioBuilder.WithContent(System.Func{System.Object},Newtonsoft.Json.JsonSerializerSettings)">
+            <summary>
+            Set the content of the scenario
+            </summary>
+            <param name="factory">Content factory</param>
+            <param name="settings">Custom JSON serializer settings</param>
+        </member>
+        <member name="M:PactNet.Verifier.Messaging.IMessageScenarioBuilder.WithContentAsync(System.Func{System.Threading.Tasks.Task{System.Object}})">
+            <summary>
+            Set the action of the scenario
+            </summary>
+            <param name="factory">Content factory</param>
+        </member>
+        <member name="M:PactNet.Verifier.Messaging.IMessageScenarioBuilder.WithContentAsync(System.Func{System.Threading.Tasks.Task{System.Object}},Newtonsoft.Json.JsonSerializerSettings)">
+            <summary>
+            Set the content of the scenario
+            </summary>
+            <param name="factory">Content factory</param>
+            <param name="settings">Custom JSON serializer settings</param>
+        </member>
+        <member name="T:PactNet.Verifier.Messaging.IMessageScenarios">
+            <summary>
+            The scenarios used to generate messages when verifying messaging pacts
+            </summary>
+        </member>
+        <member name="P:PactNet.Verifier.Messaging.IMessageScenarios.Scenarios">
+            <summary>
+            Configured scenarios
+            </summary>
+        </member>
+        <member name="M:PactNet.Verifier.Messaging.IMessageScenarios.Add(System.String,System.Func{System.Object})">
+            <summary>
+            Add a message scenario
+            </summary>
+            <param name="description">Scenario description</param>
+            <param name="factory">Message content factory</param>
+        </member>
+        <member name="M:PactNet.Verifier.Messaging.IMessageScenarios.Add(System.String,System.Action{PactNet.Verifier.Messaging.IMessageScenarioBuilder})">
+            <summary>
+            Add a message scenario
+            </summary>
+            <param name="description">Scenario description</param>
+            <param name="configure">Scenario configure</param>
+            <returns></returns>
+        </member>
+        <member name="M:PactNet.Verifier.Messaging.IMessageScenarios.Add(System.String,System.Func{PactNet.Verifier.Messaging.IMessageScenarioBuilder,System.Threading.Tasks.Task})">
+            <summary>
+            Add a message scenario
+            </summary>
+            <param name="description">Scenario description</param>
+            <param name="configure">Scenario configure</param>
+            <returns></returns>
+        </member>
+        <member name="T:PactNet.Verifier.Messaging.IMessagingProvider">
+            <summary>
+            Messaging provider service, which simulates messaging responses in order to verify interactions
+            </summary>
+        </member>
+        <member name="P:PactNet.Verifier.Messaging.IMessagingProvider.Scenarios">
+            <summary>
+            Scenarios configured for the provider
+            </summary>
+        </member>
+        <member name="M:PactNet.Verifier.Messaging.IMessagingProvider.Start(Newtonsoft.Json.JsonSerializerSettings)">
+            <summary>
+            Start the provider service
+            </summary>
+            <param name="settings">Default JSON serializer settings</param>
+            <returns>URI of the started service</returns>
+        </member>
+        <member name="T:PactNet.Verifier.Messaging.IPactVerifierMessagingProvider">
+            <summary>
+            Configured the messaging scenarios
+            </summary>
+        </member>
+        <member name="M:PactNet.Verifier.Messaging.IPactVerifierMessagingProvider.WithProviderMessages(System.Action{PactNet.Verifier.Messaging.IMessageScenarios})">
+            <summary>
+            Configure provider messages
+            </summary>
+            <param name="scenarios">Scenario configuration</param>
+            <returns>Fluent builder</returns>
+        </member>
+        <member name="T:PactNet.Verifier.Messaging.MessageInteraction">
+            <summary>
+            DTO for the request body sent by the pact verifier
+            </summary>
+        </member>
+        <member name="P:PactNet.Verifier.Messaging.MessageInteraction.Description">
+            <summary>
+            Message description
+            </summary>
+        </member>
+        <member name="T:PactNet.Verifier.Messaging.Scenario">
+            <summary>
+            Defines the scenario model
+            </summary>
+        </member>
+        <member name="P:PactNet.Verifier.Messaging.Scenario.Description">
+            <summary>
+            The description of the scenario
+            </summary>
+        </member>
+        <member name="P:PactNet.Verifier.Messaging.Scenario.Metadata">
+            <summary>
+            Message metadata
+            </summary>
+        </member>
+        <member name="P:PactNet.Verifier.Messaging.Scenario.JsonSettings">
+            <summary>
+            Custom JSON serializer settings
+            </summary>
+        </member>
+        <member name="M:PactNet.Verifier.Messaging.Scenario.#ctor(System.String,System.Func{System.Object})">
+            <summary>
+            Creates an instance of <see cref="T:PactNet.Verifier.Messaging.Scenario"/>
+            </summary>
+            <param name="description">the scenario description</param>
+            <param name="factory">Message content factory</param>
+        </member>
+        <member name="M:PactNet.Verifier.Messaging.Scenario.#ctor(System.String,System.Func{System.Object},System.Object,Newtonsoft.Json.JsonSerializerSettings)">
+            <summary>
+            Creates an instance of <see cref="T:PactNet.Verifier.Messaging.Scenario"/>
+            </summary>
+            <param name="description">the scenario description</param>
+            <param name="factory">Message content factory</param>
+            <param name="metadata">the metadata</param>
+            <param name="settings">Custom JSON serializer settings</param>
+        </member>
+        <member name="M:PactNet.Verifier.Messaging.Scenario.Invoke">
+            <summary>
+            Invoke a scenario
+            </summary>
+            <returns>The scenario message content</returns>
+        </member>
+        <member name="T:PactNet.Verifier.PactVerifierConfig">
+            <summary>
+            Pact verifier configuration
+            </summary>
+        </member>
+        <member name="P:PactNet.Verifier.PactVerifierConfig.LogLevel">
+            <summary>
+            Log level for the verifier
+            </summary>
+        </member>
+        <member name="P:PactNet.Verifier.PactVerifierConfig.Outputters">
+            <summary>
+            Log outputs
+            </summary>
+        </member>
+        <member name="M:PactNet.Verifier.PactVerifierConfig.WriteLine(System.String)">
+            <summary>
+            Write a line to every configured output
+            </summary>
+            <param name="line">Line to write</param>
+        </member>
+        <member name="T:PactNet.Verifier.ProviderStateStyle">
+            <summary>
+            Style for passing provider state information
+            </summary>
+        </member>
+        <member name="F:PactNet.Verifier.ProviderStateStyle.Body">
+            <summary>
+            Pass provider state information in the request body (default)
+            </summary>
+        </member>
+        <member name="F:PactNet.Verifier.ProviderStateStyle.Query">
+            <summary>
+            Pass provider state information as query string parameters
+            </summary>
+        </member>
+    </members>
+</doc>
