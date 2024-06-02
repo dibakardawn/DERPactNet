@@ -23,11 +23,7 @@ namespace DERPactNet
                 .UponReceiving("A GET request to /api/data")
                     .Given("There is available data")
                     .WithRequest(HttpMethod.Post, "/api/data")
-                    /*.WithHeader("Content-Type", "application/json; charset=utf-8")
-                    .WithJsonBody(new
-                    {
-                        id = 10
-                    })*/
+                    .WithJsonBody(new{id = 10}, "application/json; charset=utf-8")
                 .WillRespond()
                     .WithStatus(HttpStatusCode.OK)
                     .WithHeader("Content-Type", "application/json; charset=utf-8")

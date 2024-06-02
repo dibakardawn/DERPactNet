@@ -11,6 +11,12 @@
         }
       ],
       "request": {
+        "body": {
+          "id": 10
+        },
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
         "method": "POST",
         "path": "/api/data"
       },

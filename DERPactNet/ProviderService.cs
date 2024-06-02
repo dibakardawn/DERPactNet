@@ -23,9 +23,12 @@ namespace DERPactNet
 
         public async Task<ProviderResponse> GetData()
         {
-            //var requestModel = "{ \"id\" : 10 }";
-            //var stringContent = new StringContent(JsonConvert.SerializeObject(requestModel));
-            var httpResponse = await _client.PostAsync("/api/data", null);
+            var requestModel = new
+            {
+                id = 10
+            };
+            var stringContent = new StringContent(JsonConvert.SerializeObject(requestModel), Encoding.UTF8, "application/json");
+            var httpResponse = await _client.PostAsync("/api/data", stringContent);
             if (httpResponse.IsSuccessStatusCode)
             {
                 var responseObj = await httpResponse.Content.ReadAsStringAsync();
